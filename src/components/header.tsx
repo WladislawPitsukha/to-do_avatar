@@ -1,1 +1,0 @@
-//TODO: add logic, all elements and make component
