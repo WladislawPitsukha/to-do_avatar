@@ -11,10 +11,16 @@ export default function TodoList() {
     const [listTodos, setListTodos] = useState<Todo[]>(todoTasks);
 
     return(
-        <section className="flex bg-white h-[350px] w-full">
-            <TodoItem 
-                
-            />
+        <section className="flex flex-col bg-white h-[500px] w-full gap-3">
+            {listTodos.map((obj, index) => (
+                <TodoItem 
+                    key={index}
+                    id={obj.id}
+                    main={obj.main}
+                    status={obj.status}
+                    time={obj.time}
+                />  
+            ))}
         </section>
     )
 }

@@ -1,4 +1,5 @@
 export type Todo = {
+    id: number;
     main: Todo_main;
     status: Todo_status;
     time: Todo_time;
@@ -6,7 +7,6 @@ export type Todo = {
 }
 
 type Todo_main = {
-    id: number;
     title: string;
     description?: string;
 }
