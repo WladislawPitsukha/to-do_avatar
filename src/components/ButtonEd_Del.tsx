@@ -30,18 +30,20 @@ const ButtonEdDel = () => {
         <DivBlockToDO>
             <Button
                 sx={{
-                    minWidth: isHovered ? '120px' : '40px',
+                    minWidth: isHovered ? '86px' : '24px',
                     transition: 'all 0.3s ease',
                     cursor: 'pointer',
                     display: 'flex',
                     gap: '8px',
-                    padding: '4px 8px',
+                    margin: '0',
+                    padding: '0',
                     color: 'rgba(0, 0, 0, 0.87)',
                     fontSize: '0.875rem',
                     fontWeight: 500,
                     textTransform: 'none',
+                    backgroundColor: 'white',
                     '&:hover': {
-                        backgroundColor: 'rgba(0,0,0,0.04)',
+                        backgroundColor: 'white',
                         color: 'rgba(0, 0, 0, 0.95)'
                     }
                 }}

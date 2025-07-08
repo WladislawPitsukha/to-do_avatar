@@ -64,11 +64,10 @@ export default function TodoItem({
                     <DivBlockToDO>
                         {title}
                     </DivBlockToDO>
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center justify-around gap-2 w-full">
                         <DashBoardBlock>
                             {description}
                         </DashBoardBlock>
-                        //TODO: fix padding and params of size icon and border
                         <ButtonEdDel />
                     </div>
                 </div>
