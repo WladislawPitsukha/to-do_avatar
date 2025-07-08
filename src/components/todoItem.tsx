@@ -4,14 +4,11 @@
 
 import { Todo } from "@/types/todo";
 
-import { Accordion, AccordionDetails, AccordionSummary, Box, Button, Checkbox, Menu, MenuItem, SpeedDial, SpeedDialAction, SpeedDialIcon, Typography } from "@mui/material";
-import DashboardCustomizeIcon from '@mui/icons-material/DashboardCustomize';
-import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
-import EditSquareIcon from '@mui/icons-material/EditSquare';
 
-import React from "react";
 import DashBoardBlock from "./Dashboard";
 import ButtonEdDel from "./ButtonEd_Del";
+import { DeleteForever, EditSquare } from "@mui/icons-material";
+import { Checkbox } from "@mui/material";
 
 interface DivBlockToDOProps {
     children : React.ReactNode
@@ -28,8 +25,8 @@ export const DivBlockToDO: React.FC<DivBlockToDOProps> = ({children}) => {
 }
 
 export const actions = [
-    { icon: <EditSquareIcon />, name: 'Edit' },
-    { icon: <DeleteForeverIcon />, name: 'Delete' },
+    { icon: <EditSquare />, name: 'Edit' },
+    { icon: <DeleteForever />, name: 'Delete' },
 ];
 
 export default function TodoItem({
