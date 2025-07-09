@@ -1,33 +1,27 @@
-//TODO: add logic, all elements and make component
-//TODO: add anime button, cursor pointer ? open to buttons(edit/delete) : close button
-//TODO: add Tooltip for all DivBlockToDO-components
-
 import { Todo } from "@/types/todo";
 
-
 import DashBoardBlock from "./Dashboard";
-import ButtonEdDel from "./ButtonEd_Del";
+import ButtonEdDel from "./ButtonEdDel";
 import { DeleteForever, EditSquare } from "@mui/icons-material";
 import { Checkbox } from "@mui/material";
+import { DivBlockTodo } from "./DivBlock";
 
-interface DivBlockToDOProps {
+export interface DivBlockTodoProps {
     children : React.ReactNode
-}
-
-export const DivBlockToDO: React.FC<DivBlockToDOProps> = ({children}) => {
-    return(
-        <div className="border border-black rounded-2xl w-auto h-auto">
-            <h3 className="text-sm font-medium text-gray-700 px-2 py-1">
-                {children}
-            </h3>
-        </div>
-    )
 }
 
 export const actions = [
     { icon: <EditSquare />, name: 'Edit' },
     { icon: <DeleteForever />, name: 'Delete' },
 ];
+//TODO: to add new component and finish this func for time's block
+//export function 
+//DivBlockTodo>
+//{window.innerWidth < 480 
+//dueDate.toLocaleDateString(undefined, { month: 'numeric', day: 'numeric'}) 
+//: dueDate.toLocaleDateString()}
+//</DivBlockTodo>
+
 
 export default function TodoItem({
     id,
@@ -46,6 +40,7 @@ export default function TodoItem({
     } = time;
 
     return(
+        //TODO: add description to all components, like "type: event, deadline: 2023-10-01, etc"
         <article 
             key={id}
             className="flex items-center rounded-3xl px-4 py-5 w-full h-auto border gap-1 border-black"
@@ -53,17 +48,17 @@ export default function TodoItem({
             <Checkbox checked={completed} />
             <div className="flex flex-col items-start justify-between w-full gap-1">
                 <div className="flex items-center justify-between w-full">
-                    <DivBlockToDO>
+                    <DivBlockTodo>
                         {priority}
-                    </DivBlockToDO>
-                    <DivBlockToDO>
+                    </DivBlockTodo>
+                    <DivBlockTodo>
                         {type}
-                    </DivBlockToDO>
+                    </DivBlockTodo>
                 </div>
                 <div className="flex items-center justify-between w-full">
-                    <DivBlockToDO>
+                    <DivBlockTodo>
                         {title}
-                    </DivBlockToDO>
+                    </DivBlockTodo>
                     <div className="flex items-center justify-around gap-2 w-full">
                         <DashBoardBlock>
                             {description}
@@ -72,15 +67,17 @@ export default function TodoItem({
                     </div>
                 </div>
                 <div className="flex items-center justify-between w-full">
-                    <DivBlockToDO>
+                    <DivBlockTodo>
                         {createdAt.toLocaleDateString()}
-                    </DivBlockToDO>
-                    <DivBlockToDO>
+                    </DivBlockTodo>
+                    <DivBlockTodo>
                         {updatedAt.toLocaleDateString()}
-                    </DivBlockToDO>
-                    <DivBlockToDO>
-                        {dueDate.toLocaleDateString()}
-                    </DivBlockToDO>
+                    </DivBlockTodo>
+                    <DivBlockTodo>
+                        {window.innerWidth < 480 
+                            ? dueDate.toLocaleDateString(undefined, { month: 'numeric', day: 'numeric'}) 
+                            : dueDate.toLocaleDateString()}
+                    </DivBlockTodo>
                 </div>
             </div>
         </article>
