@@ -1,15 +1,12 @@
 "use client"
 
 import { useState } from "react";
-import { DivBlockToDO } from "./todoItem";
 import { Menu, MenuItem } from "@mui/material";
 import DescriptionIcon from '@mui/icons-material/Description';
+import DivButtonTodo from "./DivButton";
+import { DivBlockTodoProps } from "./todoItem";
 
-interface DivBlockToDOProps {
-    children : React.ReactNode
-}
-
-const DashBoardBlock: React.FC<DivBlockToDOProps> = ({children}) => {
+const DashBoardBlock: React.FC<DivBlockTodoProps> = ({children}) => {
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
     const openFunc = Boolean(anchorEl);
 
@@ -22,11 +19,20 @@ const DashBoardBlock: React.FC<DivBlockToDOProps> = ({children}) => {
 
     return(
         <div>
-            <DivBlockToDO>
+            <DivButtonTodo>
                 <button onClick={handleClick}>
-                    <DescriptionIcon className="text-black" />
+                    {window.innerWidth < 480 ? (
+                        <DescriptionIcon className="text-black" />
+                    ) : (
+                        <div className="flex items-center justify-center">
+                            <h3 className="text-sm font-medium text-gray-700">
+                                Description: 
+                            </h3>
+                            <DescriptionIcon className="text-black" />
+                        </div>                    
+                    )}
                 </button>
-            </DivBlockToDO>
+            </DivButtonTodo>
             <Menu
                 id="basic-menu"
                 anchorEl={anchorEl}

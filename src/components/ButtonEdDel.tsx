@@ -3,7 +3,7 @@
 import { DashboardCustomize, DeleteForever, EditSquare } from "@mui/icons-material";
 import Button from "@mui/material/Button"
 import { useState } from "react";
-import { DivBlockToDO } from "./todoItem";
+import DivButtonTodo from "./DivButton";
 
 const ButtonEdDel = () => {
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -27,7 +27,7 @@ const ButtonEdDel = () => {
 
     
     return(
-        <DivBlockToDO>
+        <DivButtonTodo>
             <Button
                 sx={{
                     minWidth: isHovered ? '86px' : '24px',
@@ -56,10 +56,19 @@ const ButtonEdDel = () => {
                         <DeleteForever />
                     </>
                 ) : (
-                    <DashboardCustomize />
+                    window.innerWidth < 480 ? (
+                        <DashboardCustomize />
+                    ) : (
+                        <div className="flex items-center justify-center">
+                            <h3 className="text-sm font-medium text-gray-700">
+                                Description: 
+                            </h3>
+                            <DashboardCustomize />
+                        </div>
+                    )
                 )}
             </Button>
-        </DivBlockToDO>
+        </DivButtonTodo>
     )
 }
 
