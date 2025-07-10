@@ -5,6 +5,7 @@ import ButtonEdDel from "./ButtonEdDel";
 import { DeleteForever, EditSquare } from "@mui/icons-material";
 import { Checkbox } from "@mui/material";
 import { DivBlockTodo } from "./DivBlock";
+import TimeBlockTodo from "./TimeBlockTodo";
 
 export interface DivBlockTodoProps {
     children : React.ReactNode
@@ -15,13 +16,6 @@ export const actions = [
     { icon: <DeleteForever />, name: 'Delete' },
 ];
 //TODO: to add new component and finish this func for time's block
-//export function 
-//DivBlockTodo>
-//{window.innerWidth < 480 
-//dueDate.toLocaleDateString(undefined, { month: 'numeric', day: 'numeric'}) 
-//: dueDate.toLocaleDateString()}
-//</DivBlockTodo>
-
 
 export default function TodoItem({
     id,
@@ -67,17 +61,15 @@ export default function TodoItem({
                     </div>
                 </div>
                 <div className="flex items-center justify-between w-full">
-                    <DivBlockTodo>
-                        {createdAt.toLocaleDateString()}
-                    </DivBlockTodo>
-                    <DivBlockTodo>
-                        {updatedAt.toLocaleDateString()}
-                    </DivBlockTodo>
-                    <DivBlockTodo>
-                        {window.innerWidth < 480 
-                            ? dueDate.toLocaleDateString(undefined, { month: 'numeric', day: 'numeric'}) 
-                            : dueDate.toLocaleDateString()}
-                    </DivBlockTodo>
+                    <TimeBlockTodo 
+                        time={createdAt} 
+                    />
+                    <TimeBlockTodo 
+                        time={updatedAt} 
+                    />
+                    <TimeBlockTodo 
+                        time={dueDate} 
+                    />
                 </div>
             </div>
         </article>
