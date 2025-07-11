@@ -35,6 +35,7 @@ export default function TodoItem({
 
     return(
         //TODO: add description to all components, like "type: event, deadline: 2023-10-01, etc"
+        //TODO: add changes by AI for width and height of the component
         <article 
             key={id}
             className="flex items-center rounded-3xl px-4 py-5 w-full h-auto border gap-1 border-black"
