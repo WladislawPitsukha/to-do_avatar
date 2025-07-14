@@ -15,13 +15,13 @@ export default function Footer() {
         {
             title: "Profile GitHub",
             name: "GitHub",
-            href: "https://github.com/yourusername",
+            href: "https://github.com/WladislawPitsukha",
             icon: <GitHub />
         },
         {
             title: "Profile LinkedIn",
             name: "LinkedIn",
-            href: "https://linkedin.com/in/yourusername",
+            href: "https://linkedin.com/in/wladislaw-pitsukha-17050723a/",
             icon: <LinkedIn />
         }
     ];

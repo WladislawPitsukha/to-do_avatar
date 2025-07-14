@@ -24,7 +24,7 @@ const DashBoardBlock: React.FC<DivBlockTodoProps> = ({children}) => {
                     {window.innerWidth < 480 ? (
                         <DescriptionIcon className="text-black" />
                     ) : (
-                        <div className="flex items-center justify-center">
+                        <div className="flex items-center justify-center gap-1">
                             <h3 className="text-sm font-medium text-gray-700">
                                 Description: 
                             </h3>

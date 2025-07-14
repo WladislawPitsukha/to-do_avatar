@@ -59,9 +59,9 @@ const ButtonEdDel = () => {
                     window.innerWidth < 480 ? (
                         <DashboardCustomize />
                     ) : (
-                        <div className="flex items-center justify-center">
+                        <div className="flex items-center justify-center gap-1">
                             <h3 className="text-sm font-medium text-gray-700">
-                                Description: 
+                                Settings
                             </h3>
                             <DashboardCustomize />
                         </div>
