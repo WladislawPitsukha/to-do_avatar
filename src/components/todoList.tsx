@@ -9,10 +9,10 @@ import TodoItem from "./todoItem";
 
 export default function TodoList() {
     const [listTodos, setListTodos] = useState<Todo[]>(todoTasks);
-    //TODO: add bytton Speed Dial for choose - chat with bot or add new task(form) 
+    //TODO: add button Speed Dial to choose - chat with bot or add new task(form) 
     //TODO: add logic for add new task, delete task, change status of task
     return(
-        <section className="flex flex-col bg-white h-[500px] w-full gap-3">
+        <section className="flex flex-col bg-white h-auto w-full gap-3">
             {listTodos.map((obj, index) => (
                 <TodoItem 
                     key={index}
