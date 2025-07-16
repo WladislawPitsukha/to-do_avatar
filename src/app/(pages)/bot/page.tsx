@@ -1,3 +1,4 @@
+//TODO: add working actions by bot - answearing & creating & showing the list of tasks todo for the day
 //TODO: add logic and make func
 "use client";
 
