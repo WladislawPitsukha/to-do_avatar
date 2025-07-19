@@ -2,12 +2,22 @@
 
 import { DashboardCustomize, DeleteForever, EditSquare } from "@mui/icons-material";
 import Button from "@mui/material/Button"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DivButtonTodo from "./DivButton";
 
 const ButtonEdDel = () => {
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
     const [isHovered, setIsHovered] = useState(false);
+    const [windowWidth, setWindowWidth] = useState(0);
+
+    useEffect(() => {
+        setWindowWidth(window.innerWidth);
+
+        const handleResize = () => setWindowWidth(window.innerWidth);
+        window.addEventListener('relize', handleResize);
+        
+        return () => window.removeEventListener('relize', handleResize);
+    }, []);
 
     const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
         setAnchorEl(e.currentTarget);
@@ -56,7 +66,7 @@ const ButtonEdDel = () => {
                         <DeleteForever />
                     </>
                 ) : (
-                    window.innerWidth < 480 ? (
+                    windowWidth < 480 ? (
                         <DashboardCustomize />
                     ) : (
                         <div className="flex items-center justify-center gap-1">

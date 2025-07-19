@@ -15,7 +15,6 @@ export const actions = [
     { icon: <EditSquare />, name: 'Edit' },
     { icon: <DeleteForever />, name: 'Delete' },
 ];
-//TODO: to add new component and finish this func for time's block
 
 export default function TodoItem({
     id,
@@ -34,8 +33,6 @@ export default function TodoItem({
     } = time;
 
     return(
-        //TODO: add description to all components, like "type: event, deadline: 2023-10-01, etc"
-        //TODO: add changes by AI for width and height of the component
         <article 
             key={id}
             className="flex items-center rounded-3xl px-4 py-5 w-full h-auto border gap-1 border-black"

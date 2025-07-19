@@ -4,26 +4,43 @@
 "use client";
 
 import BotWidget from "@/components/botWidget";
+import { MessageProps } from "@/types/message";
+import React, { useState } from "react";
 
-import React from "react";
-import { MessageProps } from "./template";
-interface TemplateProps {
-    messages: MessageProps[];
-    inputMessage: string;
-    setInputMessage: (message: string) => void;
-    onSendMessage: (e: React.FormEvent) => void;
-}
+export default function BotTemplate() {
+    const [messages, setMessages] = useState<MessageProps[]>([]);
+    const [inputMessage, setInputMessage] = useState("");
 
-export default function BotTemplate({
-    messages,
-    inputMessage,
-    setInputMessage,
-    onSendMessage,
-}: TemplateProps) {
+    const handleSendMessage = async (e: React.FormEvent) => {
+        e.preventDefault();
+        if (!inputMessage.trim()) return;
+
+        const userMessage: MessageProps = {
+            id: Date.now().toString(),
+            text: inputMessage,
+            sender: "user",
+            timestamp: new Date(),
+        };
+
+        setMessages((prev) => [...prev, userMessage]);
+        setInputMessage("");
+
+        const botMessage: MessageProps = {
+            id: (Date.now() + 1).toString(),
+            text: "Bot response to: " + inputMessage,
+            sender: "bot",
+            timestamp: new Date(),
+        };
+
+        setTimeout(() => {
+            setMessages((prev) => [...prev, botMessage]);
+        }, 1000);
+    };
+
     return (
         <main className="flex flex-col h-screen bg-white">
             <div className="flex-1 overflow-y-auto p-4 space-y-4">
-                {messages && messages.length > 0 ? (
+                {messages.length > 0 ? (
                     messages.map((message) => (
                         <BotWidget
                             key={message.id}
@@ -32,24 +49,24 @@ export default function BotTemplate({
                             timestamp={message.timestamp}
                         />
                     ))
-                ): (
+                ) : (
                     <div className="flex items-center justify-center h-full">
                         <p className="text-gray-500">No messages yet. Start a conversation!</p>
                     </div>
                 )}
             </div>
-            <form onSubmit={onSendMessage} className="p-4 border-t">
+            <form onSubmit={handleSendMessage} className="p-4 border-t bg-gray-50">
                 <div className="flex gap-2">
                     <input
                         type="text"
                         value={inputMessage}
                         onChange={(e) => setInputMessage(e.target.value)}
-                        className="flex-1 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2"
+                        className="flex-1 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                         placeholder="Type your message..."
                     />
                     <button
                         type="submit"
-                        className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
+                        className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
                     >
                         Send
                     </button>

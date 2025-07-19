@@ -2,8 +2,6 @@
 
 import { todoTasks } from "@/app/constants/todos";
 import { Todo } from "@/types/todo";
-//TODO: add logic, all elements and make component
-
 import { useState } from "react";
 import TodoItem from "./todoItem";
 
