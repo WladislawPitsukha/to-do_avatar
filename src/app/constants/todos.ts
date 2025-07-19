@@ -1,6 +1,4 @@
 import { Todo } from "@/types/todo";
-//TODO: add new tasks (3-7) for testing more values in the list
-
 
 export const todoTasks: Todo[] = [
     {

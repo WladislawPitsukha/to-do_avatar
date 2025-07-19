@@ -18,7 +18,7 @@ export function CreateIcon(icon: any): JSX.Element {
     )
 }
 
-const BotWidget: React.FC<BotWidgetProps> = ({ message, sender, timestamp }) => {
+export default function BotWidget({ message, sender, timestamp }: BotWidgetProps) {
     const isBot = sender === 'bot';
 
     return(
@@ -46,5 +46,3 @@ const BotWidget: React.FC<BotWidgetProps> = ({ message, sender, timestamp }) => 
         </div>
     );
 }
-
-export default BotWidget;

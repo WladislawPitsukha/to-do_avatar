@@ -1,5 +1,3 @@
-//TODO: add logic, all elements and make component
-
 import { GitHub, LinkedIn } from "@mui/icons-material";
 import Link from "next/link";
 
@@ -27,7 +25,7 @@ export default function Footer() {
     ];
 
     return(
-        <footer className="border bg-white border-black w-full h-[90px] mt-auto">
+        <footer className="sticky bottom-0 right-0 border bg-white border-black w-full h-[90px] mt-4">
             <div className="flex items-center justify-between h-full max-w-7xl mx-auto px-4">
                 <div className="flex items-center gap-2">
                     <p className="text-sm text-black">
