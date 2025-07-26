@@ -1,5 +1,8 @@
 //TODO: add profile's page, description + AI help with page's structure of UI-components & elements 
 //TODO: add logic and make func
+//TODO: add more information
+//TODO: make another files for users
+
 "use client";
 
 import { Person } from "@mui/icons-material";
