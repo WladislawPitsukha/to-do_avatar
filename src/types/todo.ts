@@ -21,7 +21,7 @@ export type Todo_status = {
 export type Todo_time = {
     createdAt: Date;
     updatedAt: Date;
-    dueDate: Date | string;
+    dueDate: Date;
 }
 
 export type Todo_extra = {

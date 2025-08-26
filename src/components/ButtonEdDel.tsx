@@ -5,7 +5,7 @@ import Button from "@mui/material/Button"
 import { useEffect, useState } from "react";
 import DivButtonTodo from "./DivButton";
 
-const ButtonEdDel = () => {
+const ButtonEdDel = ({ onDelete }: { onDelete: () => void }) => {
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
     const [isHovered, setIsHovered] = useState(false);
     const [windowWidth, setWindowWidth] = useState(0);
@@ -19,12 +19,13 @@ const ButtonEdDel = () => {
         return () => window.removeEventListener('relize', handleResize);
     }, []);
 
-    const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-        setAnchorEl(e.currentTarget);
-    }
-
     const handleClose = () => {
         setAnchorEl(null);
+    }
+
+    const handleDelete = () => {
+        onDelete();
+        handleClose();
     }
 
     const handleMouseUp = () => {
@@ -63,7 +64,7 @@ const ButtonEdDel = () => {
                 {isHovered ? (
                     <>
                         <EditSquare />
-                        <DeleteForever />
+                        <DeleteForever onClick={handleDelete} />
                     </>
                 ) : (
                     windowWidth < 480 ? (

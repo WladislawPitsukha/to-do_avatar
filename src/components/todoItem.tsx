@@ -7,6 +7,11 @@ import { Checkbox } from "@mui/material";
 import { DivBlockTodo } from "./DivBlock";
 import TimeBlockTodo from "./TimeBlockTodo";
 
+export interface TodoItemProps extends Todo {
+    onDelete: () => void;
+    onStatusChange: (status: Todo["status"]) => void;
+}
+
 export interface DivBlockTodoProps {
     children : React.ReactNode
 }
@@ -21,23 +26,40 @@ export default function TodoItem({
     main,
     status,
     time,
-}: Todo) {
+    onDetele, 
+    onStatusChange,
+}: Todo & {
+    onDetele: () => void,
+    onStatusChange: (status: Todo['status']) => void,
+}) {
     const {
         title, description,
     } = main;
+
     const {
         completed, priority, type,
     } = status;
+    
     const {
         createdAt, updatedAt, dueDate
     } = time;
+
+    const handleStatusChange = () => {
+        onStatusChange({
+            ...status,
+            completed: !completed,
+        })
+    }
 
     return(
         <article 
             key={id}
             className="flex items-center rounded-3xl px-4 py-5 w-full h-auto border gap-1 border-black"
         >
-            <Checkbox checked={completed} />
+            <Checkbox 
+                checked={completed}
+                onChange={handleStatusChange}
+            />
             <div className="flex flex-col items-start justify-between w-full gap-1">
                 <div className="flex items-center justify-between w-full">
                     <DivBlockTodo>
@@ -55,7 +77,9 @@ export default function TodoItem({
                         <DashBoardBlock>
                             {description}
                         </DashBoardBlock>
-                        <ButtonEdDel />
+                        <ButtonEdDel 
+                            onDelete={onDetele}
+                        />
                     </div>
                 </div>
                 <div className="flex items-center justify-between w-full">
