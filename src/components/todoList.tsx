@@ -1,73 +1,55 @@
 "use client";
 
-//TODO: deleteTodo mutation not updating cache correctly
-//TODO: Implement error handling for mutations
-//TODO: Add loading states for mutations
-//TODO: Optimize re-rendering of TodoItem components
-//TODO: data.todos could be undefined, add checks
+//TODO: add mutations/func for delete || COMPONENT_TODO-ITEM
+//TODO: add mutations/func for update status || COMPONENT_TODO-ITEM
+//TODO: add mutations/func to change task || COMPONENT_TODO-ITEM
+//TODO: optimize re-rendering of TodoItem components || COMPONENT_TODO-ITEM
+//TODO: add sections for filtering and sorting
+//TODO: add optimistic UI updates
+//TODO: add loading states for mutations 
+//TODO: handle errors from mutations
 
-import { GET_TODOS } from "@/graphql/queries";
-import { DELETE_TODO, UPDATE_TODO_STATUS } from "@/graphql/mutations";
 import { Todo } from "@/types/todo";
 import TodoItem from "./todoItem";
+import { todoTasks } from "@/app/constants/todos";
+import { GET_TODOS } from "@/graphql/queries";
 import { useMutation, useQuery } from "@apollo/client/react";
+import { UPDATE_TODO_STATUS } from "@/graphql/mutations";
 
 export default function TodoList() {
-    const { data, loading, error } = useQuery(GET_TODOS);
-    const [updateTodoStatus] = useMutation(UPDATE_TODO_STATUS);
-    const [deleteTodoMutation] = useMutation(DELETE_TODO);
+    const {data, loading: queryLoading, error: queryError} = useQuery(GET_TODOS);
+    const [updateTodoStatus, { loading: mutationLoading, error: mutationError }] = useMutation(UPDATE_TODO_STATUS);
 
-    if (loading) return <div>Loading...</div>;
-    if (error) return <div>Error: {error.message}</div>;
-
-    const handleDelete = async (id: number) => {
+    const handleStatusUpdate = async (id: number, completed: boolean) => {
         try {
-            await deleteTodoMutation({
-                variables: { id: id.toString() },
-                update: (cache, { data: { deleteTodo } }) => {
-                    const existingTodos: any = cache.readQuery({ query: GET_TODOS });
-                    if (existingTodos) {
-                    cache.writeQuery({
-                        query: GET_TODOS,
-                        data: {
-                        todos: existingTodos.todos.filter((todo: Todo) => todo.id !== id),
-                        },
-                    });
+            await updateTodoStatus({
+                variables: {
+                    id: id.toString(),
+                    status: {
+                        completed,
                     }
                 },
-            });
-        } catch (err) {
-            console.error("Error deleting todo:", err);
+                optimisticResponse: {
+                    updateTodoStatus: {
+                        id: id.toString(),
+                        status: {
+                            completed,
+                        }
+                    }
+                }
+            })
+        } catch (error) {
+            console.error("Failed to update status:", error);
         }
-    };
+    }
 
-    const handleStatusChange = async (id: number, status: Todo["status"]) => {
-        try {
-        await updateTodoStatus({
-            variables: {
-            id: id.toString(),
-            status: {
-                completed: status.completed,
-                priority: status.priority,
-                type: status.type,
-            },
-            },
-        });
-        } catch (err) {
-        console.error("Error updating todo status:", err);
-        }
-    };
+    if (queryLoading) return <div>Loading...</div>;
+    if (queryError) return <div>Error loading todos: {queryError.message}</div>;
+    if (mutationError) return <div>Error updating todo: {mutationError.message}</div>;
 
     return (
         <section className="flex flex-col bg-white h-auto w-full gap-3">
-            {data?.todos?.map((todo: Todo) => (
-                <TodoItem 
-                    key={todo.id}
-                    {...todo}
-                    onDelete={() => handleDelete(todo.id)}
-                    onStatusChange={(status) => handleStatusChange(todo.id, status)}
-                />  
-            ))}
+            {data.todos}
         </section>
     );
 }

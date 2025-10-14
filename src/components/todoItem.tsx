@@ -6,11 +6,15 @@ import { DeleteForever, EditSquare } from "@mui/icons-material";
 import { Checkbox } from "@mui/material";
 import { DivBlockTodo } from "./DivBlock";
 import TimeBlockTodo from "./TimeBlockTodo";
+import { useState } from "react";
+import { useMutation } from "@apollo/client/react";
+import { UPDATE_TODO_STATUS } from "@/graphql/mutations";
 
-export interface TodoItemProps extends Todo {
-    onDelete: () => void;
-    onStatusChange: (status: Todo["status"]) => void;
-}
+
+//TODO: add mutations/func for delete 
+//TODO: add mutations/func for update status
+//TODO: add mutations/func to change task
+//TODO: optimize re-rendering of TodoItem components || COMPONENT_TODO-ITEM
 
 export interface DivBlockTodoProps {
     children : React.ReactNode
@@ -26,11 +30,9 @@ export default function TodoItem({
     main,
     status,
     time,
-    onDetele, 
-    onStatusChange,
 }: Todo & {
-    onDetele: () => void,
-    onStatusChange: (status: Todo['status']) => void,
+    onStatusUpdate: (id: number, completed: boolean) => Promise<void>;
+    loading?: boolean
 }) {
     const {
         title, description,
@@ -44,11 +46,20 @@ export default function TodoItem({
         createdAt, updatedAt, dueDate
     } = time;
 
-    const handleStatusChange = () => {
-        onStatusChange({
-            ...status,
-            completed: !completed,
-        })
+    const [statusTask, setStatusTask] = useState(completed);
+    const [updateTodoStatus] = useMutation(UPDATE_TODO_STATUS);
+
+    const handleStatusChange = async (): Promise<void> => {
+        const newStatus = !statusTask;
+        setStatusTask(newStatus);
+
+        try {
+            await updateTodoStatus(id, newStatus);
+        } catch (error) {
+            setStatusTask(!newStatus);
+            console.error("Failed to update status:", error);
+        }
+    }
     }
 
     return(
@@ -57,8 +68,9 @@ export default function TodoItem({
             className="flex items-center rounded-3xl px-4 py-5 w-full h-auto border gap-1 border-black"
         >
             <Checkbox 
-                checked={completed}
+                checked={statusTask}
                 onChange={handleStatusChange}
+                disabled={}
             />
             <div className="flex flex-col items-start justify-between w-full gap-1">
                 <div className="flex items-center justify-between w-full">
@@ -78,7 +90,7 @@ export default function TodoItem({
                             {description}
                         </DashBoardBlock>
                         <ButtonEdDel 
-                            onDelete={onDetele}
+                            onDelete={() => {}}
                         />
                     </div>
                 </div>
