@@ -1,12 +1,12 @@
 "use client";
 
-//TODO: add mutations/func for delete || COMPONENT_TODO-ITEM
-//TODO: add mutations/func for update status || COMPONENT_TODO-ITEM
-//TODO: add mutations/func to change task || COMPONENT_TODO-ITEM
-//TODO: optimize re-rendering of TodoItem components || COMPONENT_TODO-ITEM
+//TODO: add mutations/func to change title of task || COMPONENT_TODO-ITEM
+//TODO: add mutations/func to change description of task || COMPONENT_TODO-ITEM
+//TODO: add mutations/func to change the whole form of task || COMPONENT_TODO-ITEM
+
 //TODO: add sections for filtering and sorting
-//TODO: add optimistic UI updates
 //TODO: add loading states for mutations 
+//TODO: add optimistic UI updates
 //TODO: handle errors from mutations
 
 import { Todo } from "@/types/todo";
@@ -16,8 +16,12 @@ import { GET_TODOS } from "@/graphql/queries";
 import { useMutation, useQuery } from "@apollo/client/react";
 import { UPDATE_TODO_STATUS } from "@/graphql/mutations";
 
+interface GetListTODO {
+    todos: Todo[];
+}
+
 export default function TodoList() {
-    const {data, loading: queryLoading, error: queryError} = useQuery(GET_TODOS);
+    const {data, loading: queryLoading, error: queryError} = useQuery<GetListTODO>(GET_TODOS);
     const [updateTodoStatus, { loading: mutationLoading, error: mutationError }] = useMutation(UPDATE_TODO_STATUS);
 
     const handleStatusUpdate = async (id: number, completed: boolean) => {
@@ -43,13 +47,42 @@ export default function TodoList() {
         }
     }
 
-    if (queryLoading) return <div>Loading...</div>;
-    if (queryError) return <div>Error loading todos: {queryError.message}</div>;
-    if (mutationError) return <div>Error updating todo: {mutationError.message}</div>;
+    //if (queryLoading) return <div>Loading...</div>;
+    //if (queryError) return <div>Error loading todos: {queryError.message}</div>;
+    //if (mutationError) return <div>Error updating todo: {mutationError.message}</div>;
 
     return (
         <section className="flex flex-col bg-white h-auto w-full gap-3">
-            {data.todos}
+            {data?.todos !== undefined ? (
+                data.todos.map((todo: Todo) => (
+                    <TodoItem 
+                        key={todo.id}
+                        {...todo}
+                        onStatusUpdate={handleStatusUpdate}
+                    />
+                ))
+            ) : (
+                <div className="flex flex-col items-center justify-center w-full gap-4">
+                    {queryLoading ? (
+                        <div>Loading todos...</div>
+                    ) : (
+                        todoTasks.map((todo) => (
+                            <TodoItem 
+                                key={todo.id}
+                                {...todo}
+                                onStatusUpdate={handleStatusUpdate}
+                            />
+                        ))
+                    )}
+                </div>
+            )}
+            {todoTasks.map((todo) => (
+                <TodoItem 
+                    key={todo.id}
+                    {...todo}
+                    onStatusUpdate={handleStatusUpdate}
+                />
+            ))}
         </section>
     );
 }

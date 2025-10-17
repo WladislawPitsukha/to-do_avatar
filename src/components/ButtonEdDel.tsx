@@ -5,7 +5,12 @@ import Button from "@mui/material/Button"
 import { useEffect, useState } from "react";
 import DivButtonTodo from "./DivButton";
 
-const ButtonEdDel = ({ onDelete }: { onDelete: () => void }) => {
+const ButtonEdDel = ({
+    onDelete, disabled
+}: {
+    onDelete: () => void;
+    disabled?: boolean;
+}) => {
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
     const [isHovered, setIsHovered] = useState(false);
     const [windowWidth, setWindowWidth] = useState(0);

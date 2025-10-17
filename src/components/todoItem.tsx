@@ -1,5 +1,4 @@
 import { Todo } from "@/types/todo";
-
 import DashBoardBlock from "./Dashboard";
 import ButtonEdDel from "./ButtonEdDel";
 import { DeleteForever, EditSquare } from "@mui/icons-material";
@@ -8,13 +7,11 @@ import { DivBlockTodo } from "./DivBlock";
 import TimeBlockTodo from "./TimeBlockTodo";
 import { useState } from "react";
 import { useMutation } from "@apollo/client/react";
-import { UPDATE_TODO_STATUS } from "@/graphql/mutations";
+import { DELETE_TODO, UPDATE_TODO, UPDATE_TODO_STATUS } from "@/graphql/mutations";
 
-
-//TODO: add mutations/func for delete 
-//TODO: add mutations/func for update status
-//TODO: add mutations/func to change task
-//TODO: optimize re-rendering of TodoItem components || COMPONENT_TODO-ITEM
+//TODO: add mutations/func to change title of task
+//TODO: add mutations/func to change description of task
+//TODO: add mutations/func to change the whole form of task
 
 export interface DivBlockTodoProps {
     children : React.ReactNode
@@ -33,6 +30,7 @@ export default function TodoItem({
 }: Todo & {
     onStatusUpdate: (id: number, completed: boolean) => Promise<void>;
     loading?: boolean
+    onDelete?: (id: number) => void;
 }) {
     const {
         title, description,
@@ -46,21 +44,102 @@ export default function TodoItem({
         createdAt, updatedAt, dueDate
     } = time;
 
-    const [statusTask, setStatusTask] = useState(completed);
+    
     const [updateTodoStatus] = useMutation(UPDATE_TODO_STATUS);
+    const [updateTodo] = useMutation(UPDATE_TODO);
+    const [deleteTodo, { loading: deleteLoading }] = useMutation(DELETE_TODO);
+
+    const [statusTask, setStatusTask] = useState(completed);
+    const [statusEditing, setStatusEditing] = useState<boolean>(false);
+    const [editedDesc, setEditingDesc] = useState(description);
+    //const [editedTitle, setEditedTitle] = useState(title);
 
     const handleStatusChange = async (): Promise<void> => {
         const newStatus = !statusTask;
         setStatusTask(newStatus);
 
         try {
-            await updateTodoStatus(id, newStatus);
+            await updateTodoStatus({
+                variables: {
+                    id: id.toString(),
+                    status: {
+                        completed: newStatus,
+                    }
+                },
+                optimisticResponse: {
+                    updateTodoStatus: {
+                        id: id.toString(),
+                        status: {
+                            completed: newStatus,
+                            priority,
+                            type,
+                            __typename: "Todo_status"
+                        },
+                        __typename: "TODO"
+                    }
+                }
+            });
         } catch (error) {
             setStatusTask(!newStatus);
             console.error("Failed to update status:", error);
         }
     }
+
+    const handleDelete = async (): Promise<void> => {
+        try {
+            await deleteTodo({
+                variables: { id: id.toString()},
+                update: (cache) => {
+                    cache.modify({
+                        fields: {
+                            todos(existingTodos = [], { readField }) {
+                                return existingTodos.filter(
+                                    (todoRef: any) => readField('id', todoRef) !== id.toString()
+                                );
+                            },
+                        },
+                    })
+                },
+            })
+        } catch (error) {
+            console.error("Failed to delete todo:", error);
+        }
     }
+
+    const handleEdiDescChange = async (): Promise<void> => {
+        if(editedDesc === description) {
+            setStatusEditing(false);
+            return;
+        }
+
+        try {
+            await updateTodo({
+                variables: {
+                    id: id.toString(),
+                    input: {
+                        main: {
+                            title,
+                            description: editedDesc
+                        },
+                        status: {
+                            completed: statusTask,
+                            priority,
+                            type,
+                        },
+                        time: {
+                            createdAt,
+                            updatedAt: new Date(),
+                            dueDate,
+                        }
+                    },
+                },
+            })
+            setStatusEditing(false);
+        } catch(error) {
+            setEditingDesc(description);
+            console.error("Failed to update description:", error);
+        }
+    } 
 
     return(
         <article 
@@ -70,7 +149,6 @@ export default function TodoItem({
             <Checkbox 
                 checked={statusTask}
                 onChange={handleStatusChange}
-                disabled={}
             />
             <div className="flex flex-col items-start justify-between w-full gap-1">
                 <div className="flex items-center justify-between w-full">
@@ -87,10 +165,30 @@ export default function TodoItem({
                     </DivBlockTodo>
                     <div className="flex items-center justify-around gap-2 w-full">
                         <DashBoardBlock>
-                            {description}
+                            {statusEditing ? (
+                                <div className="flex items-center gap-2">
+                                    <input
+                                        type="text"
+                                        value={editedDesc}
+                                        onChange={(e) => setEditingDesc(e.target.value)}
+                                        onBlur={handleEdiDescChange}
+                                        className="px-2 py-1 border rounded"
+                                        autoFocus
+                                        placeholder="description"
+                                    />
+                                </div>
+                            ) : (
+                                <div
+                                    onClick={() => setStatusEditing(true)}
+                                    className="cursor-pointer"
+                                >
+                                    {description}
+                                </div>
+                            )}
                         </DashBoardBlock>
                         <ButtonEdDel 
-                            onDelete={() => {}}
+                            onDelete={handleDelete}
+                            disabled={deleteLoading}
                         />
                     </div>
                 </div>
