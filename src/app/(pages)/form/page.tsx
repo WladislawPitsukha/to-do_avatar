@@ -1,4 +1,3 @@
-//TODO: add form, design by AI
 "use client";
 
 import { Todo, Todo_status } from "@/types/todo";

@@ -1,10 +1,6 @@
 "use client";
 
-//TODO: add mutations/func to change title of task || COMPONENT_TODO-ITEM
-//TODO: add mutations/func to change description of task || COMPONENT_TODO-ITEM
-//TODO: add mutations/func to change the whole form of task || COMPONENT_TODO-ITEM
-
-//TODO: add sections for filtering and sorting
+//TODO: add sections for filtering & sorting
 //TODO: add loading states for mutations 
 //TODO: add optimistic UI updates
 //TODO: handle errors from mutations
