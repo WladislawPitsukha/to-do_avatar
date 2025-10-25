@@ -12,6 +12,13 @@ import { DELETE_TODO, UPDATE_TODO, UPDATE_TODO_STATUS } from "@/graphql/mutation
 //TODO: add mutations/func to change title of task
 //TODO: add mutations/func to change description of task
 //TODO: add mutations/func to change the whole form of task
+//TODO: delete block of settings
+//TODO: add showing description when cursor-pointer on block description
+//TODO: add icon editon on blocks:  title, description 
+//TODO: add eding by icon-button description, title when click on block edit
+//TODO: add eding by select for priority and type
+//TODO: add changing all type of date 
+
 
 export interface DivBlockTodoProps {
     children : React.ReactNode
