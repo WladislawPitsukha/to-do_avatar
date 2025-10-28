@@ -1,6 +1,8 @@
 //TODO: add working actions by bot - answearing & creating & showing the list of tasks todo for the day
 //TODO: add logic and make func
 
+//TODO: add funcComponent BotFunAns.ts to generate answers by bot && test it here
+
 "use client";
 
 import BotWidget from "@/components/botWidget";
@@ -41,23 +43,7 @@ export default function BotTemplate() {
     return (
         <main className="relative pt-4 px-4">
             <div className="flex flex-col h-screen">
-                <div className="flex-1 overflow-y-auto p-4 space-y-4">
-                    {messages.length > 0 ? (
-                        messages.map((message) => (
-                            <BotWidget
-                                key={message.id}
-                                message={message.text}
-                                sender={message.sender}
-                                timestamp={message.timestamp}
-                            />
-                        ))
-                    ) : (
-                        <div className="flex items-center justify-center h-full">
-                            <p className="text-gray-500">No messages yet. Start a conversation!</p>
-                        </div>
-                    )}
-                </div>
-                <form onSubmit={handleSendMessage} className="stucky bottom-0 right-0 p-4 border-t bg-gray-50">
+                <form onSubmit={handleSendMessage} className="stucky top-0 right-0 p-4 border-t bg-gray-50">
                     <div className="flex gap-2">
                         <input
                             type="text"
@@ -74,6 +60,22 @@ export default function BotTemplate() {
                         </button>
                     </div>
                 </form>
+                <div className="flex-1 overflow-y-auto p-4 space-y-4">
+                    {messages.length > 0 ? (
+                        messages.map((message) => (
+                            <BotWidget
+                                key={message.id}
+                                message={message.text}
+                                sender={message.sender}
+                                timestamp={message.timestamp}
+                            />
+                        ))
+                    ) : (
+                        <div className="flex items-center justify-center h-full">
+                            <p className="text-gray-500">No messages yet. Start a conversation!</p>
+                        </div>
+                    )}
+                </div>
             </div>
             <div className="sticky bottom-0 right-0 h-auto w-auto z-50">
                 <SpeedDialMain />

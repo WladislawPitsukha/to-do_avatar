@@ -1,5 +1,10 @@
 //TODO: add profile's page, description + AI help with page's structure of UI-components & elements 
 //TODO: add logic and make func
+//TODO: add more information & details about user: type of user: premium, free, admin
+//TODO: make another components for users
+//TODO: add section with settings, preferences, activity, etc.
+//examples on chat with ChatGPT: session "add to components"
+
 "use client";
 
 import { Person } from "@mui/icons-material";

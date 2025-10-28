@@ -1,19 +1,41 @@
-//TODO: add DataBase connection
-//TODO: add authentication
-//TODO: add working chat with bot 
+import NextAuth, { NextAuthOptions } from "next-auth";
+import CredentialsProvider from "next-auth/providers/credentials";
 
-import { NextResponse } from 'next/server';
-
-export async function POST(request: Request) {
-    try {
-        const { message } = await request.json();
-        const responce = 'Bot received: ' + message;
-
-        return NextResponse.json({ responce });
-    } catch (error) {
-        return NextResponse.json(
-            { error: 'Failed to process the request' },
-            { status: 500}
-        )
+export const authOptions: NextAuthOptions = {
+    providers: [
+        CredentialsProvider({
+            name: "Credentials",
+            credentials: {
+                email: { label: "Email", type: "email" },
+                password: { label: "Password", type: "password" }
+            },
+            async authorize(credentials) {
+                if (!credentials?.email || !credentials?.password) {
+                    return null;
+                }
+                try {
+                    //TODO: Add your authentication logic here 
+                    //TODO: This is a basic example - replace with your actual auth logic 
+                    return {
+                        id: "1",
+                        email: credentials.email,
+                        name: "Test User"
+                    };
+                } catch (error) {
+                    console.error("Authentication error:", error);
+                    return null;
+                }
+            }
+        })
+    ],
+    pages: {
+        signIn: "/login",
+    },
+    session: {
+        strategy: "jwt"
     }
-}
+};
+
+const handler = NextAuth(authOptions); 
+
+export { handler as GET, handler as POST };

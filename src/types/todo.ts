@@ -1,30 +1,30 @@
 export type Todo = {
     id: number;
-    main: Todo_main;
+    main: Todo_text;
     status: Todo_status;
     time: Todo_time;
     extra?: Todo_extra;
 }
 
-type Todo_main = {
+export type Todo_text = {
     title: string;
     description?: string;
 }
 
-type Todo_status = {
+export type Todo_status = {
     completed: boolean;
     priority: "low" | "medium" | "high";
     type: "task" | "event" | "note";
     archived?: boolean;
 }
 
-type Todo_time = {
+export type Todo_time = {
     createdAt: Date;
     updatedAt: Date;
     dueDate: Date;
 }
 
-type Todo_extra = {
+export type Todo_extra = {
     tags?: string[];
     subTasks?: Todo[];
 }
