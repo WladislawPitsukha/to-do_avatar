@@ -1,6 +1,8 @@
 //TODO: add working actions by bot - answearing & creating & showing the list of tasks todo for the day
 //TODO: add logic and make func
 
+//TODO: add funcComponent BotFunAns.ts to generate answers by bot && test it here
+
 "use client";
 
 import BotWidget from "@/components/botWidget";
