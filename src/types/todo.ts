@@ -1,12 +1,12 @@
 export type Todo = {
     id: number;
-    main: Todo_main;
+    main: Todo_text;
     status: Todo_status;
     time: Todo_time;
     extra?: Todo_extra;
 }
 
-export type Todo_main = {
+export type Todo_text = {
     title: string;
     description?: string;
 }
