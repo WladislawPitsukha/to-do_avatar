@@ -1,10 +1,15 @@
+//TODO: CSS: change icon color of bot, bad view with white bg
+//TODO: CSS: change input box and button style to more modern
+//TODO: CSS: change color of input bg and text, bad view with white bg
+
 //TODO: add working actions by bot - answearing & creating & showing the list of tasks todo for the day
+
 //TODO: add logic and make func
 
-//TODO: add funcComponent BotFunAns.ts to generate answers by bot && test it here
 
 "use client";
 
+import { generateReplyByBot } from "@/app/utils/generateReplyByBot";
 import BotWidget from "@/components/botWidget";
 import SpeedDialMain from "@/components/SpeedDialMain";
 import { MessageProps } from "@/types/message";
@@ -20,7 +25,7 @@ export default function BotTemplate() {
 
         const userMessage: MessageProps = {
             id: Date.now().toString(),
-            text: inputMessage,
+            mesText: inputMessage,
             sender: "user",
             timestamp: new Date(),
         };
@@ -28,16 +33,19 @@ export default function BotTemplate() {
         setMessages((prev) => [...prev, userMessage]);
         setInputMessage("");
 
+        const replyTextByBot = generateReplyByBot(inputMessage);
+
         const botMessage: MessageProps = {
             id: (Date.now() + 1).toString(),
-            text: "Bot response to: " + inputMessage,
+            subText: "Bot response to: " + inputMessage,
+            mesText: replyTextByBot,
             sender: "bot",
             timestamp: new Date(),
         };
 
         setTimeout(() => {
             setMessages((prev) => [...prev, botMessage]);
-        }, 1000);
+        }, 2000);
     };
 
     return (
@@ -65,7 +73,8 @@ export default function BotTemplate() {
                         messages.map((message) => (
                             <BotWidget
                                 key={message.id}
-                                message={message.text}
+                                subText={message.subText}
+                                message={message.mesText}
                                 sender={message.sender}
                                 timestamp={message.timestamp}
                             />

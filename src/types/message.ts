@@ -1,6 +1,7 @@
 export interface MessageProps {
     id: string;
-    text: string;
+    subText?: string
+    mesText: string;
     sender: "user" | "bot";
     timestamp: Date;
 }

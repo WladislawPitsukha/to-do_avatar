@@ -3,6 +3,7 @@ import PortraitIcon from '@mui/icons-material/Portrait';
 import SmartToyIcon from '@mui/icons-material/SmartToy';
 
 interface BotWidgetProps {
+    subText?: string;
     message: string;
     sender: 'user' | 'bot';
     timestamp: Date;
@@ -18,7 +19,7 @@ export function CreateIcon(icon: any): JSX.Element {
     )
 }
 
-export default function BotWidget({ message, sender, timestamp }: BotWidgetProps) {
+export default function BotWidget({ subText, message, sender, timestamp }: BotWidgetProps) {
     const isBot = sender === 'bot';
 
     return(
@@ -34,6 +35,9 @@ export default function BotWidget({ message, sender, timestamp }: BotWidgetProps
                 <span className="text-sm font-medium mb-1">
                     {isBot ? <>{CreateIcon(SmartToyIcon)}: Bot</> : <>{CreateIcon(PortraitIcon)}: You</>}
                 </span>
+                {subText === "" || subText === undefined ? null : (
+                    <span className="text-xs italic mb-2 opacity-75">{subText}</span>
+                )}
                 <p className="text-base">{message}</p>
                 <span className="text-xs mt-2 opacity-75">
                     {timestamp.toLocaleTimeString([], {
