@@ -17,7 +17,6 @@ export function generateReplyByBot(message: string): string {
     }
 
     const greetings = ["hi", "hello", "hey", "good morning", "good afternoon", "good evening"];
-    const farewells = ["bye", "goodbye", "see you", "take care", "farewell"];
     const thanks = ["thanks", "thank you", "much appreciated", "grateful"];
     const helpRequests = ["help", "assist", "support", "need help", "can you help"];
     const explicitQuestions = ["?", "what", "why", "how", "when", "where", "who"];
@@ -28,6 +27,44 @@ export function generateReplyByBot(message: string): string {
     const taskQueries = ["task", "todo", "to-do", "reminder", "note"];
     const weatherQueries = ["weather", "temperature", "forecast", "rain", "sunny"];
 
+    type ReplyCategory = "greeting" | "thanks" | "helpRequest" | "explicitQuestion" | "parting" | "timeQuery" | "taskQuery" | "weatherQuery" | "general";
+
+    interface ReplyCategoreProps {
+        id: number;
+        category: ReplyCategory;
+        phrases: string[];
+        reply: string;
+    }
+
+    const arrayReply: ReplyCategoreProps[] = [
+        {
+            id: 1,
+            category: "greeting",
+            phrases: ["hi", "hello", "hey", "good morning", "good afternoon", "good evening"],
+            reply: "Good morning! How can I assist you today?"
+        },
+    ]
+
+    //TODO: add more logic here
+    //TODO: finish func later
+    //TODO: use analizeMessage func later in this component
+    function analizeMessage({
+        id,
+        category,
+        phrases,
+        reply
+    }: ReplyCategoreProps) {
+        if(phrases.some((phrase) => messageLower(lowerMes).includes(phrase))) {
+            const greetMatch = greetings.find((greet) => messageLower(lowerMes).includes(greet));
+
+            if(greetMatch) {
+                return `${""}Good morning! How can I assist you today?`;
+            }
+        }
+
+        return "I'm here if you need anything — tell me how I can help.";
+    }
+
 
     if (greetings.some((greet) => messageLower(lowerMes).includes(greet))) {
         const greetMatch = greetings.find((greet) => messageLower(lowerMes).includes(greet));
@@ -35,6 +72,10 @@ export function generateReplyByBot(message: string): string {
         if(greetMatch) {
             return `${""}Good morning! How can I assist you today?`;
         }
+    }
+
+    if (thanks.some((thank) => messageLower(lowerMes).includes(thank))) {
+        return "You're welcome! If you need anything else, just let me know.";
     }
 
     return "I'm here if you need anything — tell me how I can help.";
