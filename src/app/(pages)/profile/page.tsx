@@ -58,7 +58,7 @@ export default function Template({ profile }: TemplateProps) {
                     </section>
                 </div>
             </div>
-            <div className="sticky bottom-0 right-0 h-auto w-auto z-50">
+            <div className="fixed bottom-24 right-4 z-50">
                 <SpeedDialMain />
             </div>
         </main>

@@ -23,7 +23,7 @@ export default function ProfileLayout({
     return (
         <div className="min-h-screen flex flex-col bg-white">
             <Navbar />
-            <Template profile={profileData} />
+                <Template profile={profileData} />
             <Footer />
         </div>
     );

@@ -1,7 +1,8 @@
 "use client"
 
 import React from "react";
-import { Home, Person, SmartToy } from "@mui/icons-material";
+import { Home, Person } from "@mui/icons-material";
+import ThreePIcon from '@mui/icons-material/ThreeP';
 import Link from "next/link";
 import { usePathname } from "next/navigation"
 import { NavbarProps } from "@/types/navbar";
@@ -19,12 +20,12 @@ export default function Navbar() {
     const navItems: NavbarProps[] = [
         { title: "Home", href: "/", label: "Home", icon: <Home /> },
         { title: "Profile", href: "/profile", label: "Profile", icon: <Person /> },
-        { title: "Bot", href: "/bot", label: "Bot", icon: <SmartToy /> },
+        { title: "Chat", href: "/chat", label: "chat", icon: <ThreePIcon /> },
     ];
     //TODO: add BurgerButton, when a phone's type
     
     return(
-        <nav className="sticky top-0 right-0 border-b bg-white border-gray-200 w-full mb-4 h-[60px] z-50">
+        <nav className="sticky top-0 right-0 border-b bg-white border-gray-200 w-full h-[60px] z-50">
             <div className="flex items-center justify-around h-full max-w-7xl mx-auto">
                 <div className="flex items-center gap-2">
                     <h1 className="text-xl font-bold text-black">
