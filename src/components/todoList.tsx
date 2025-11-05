@@ -6,7 +6,7 @@
 //TODO: handle errors from mutations
 
 import { Todo } from "@/types/todo";
-import TodoItem from "./todoItem";
+import TodoItem from "./TodoItem";
 import { todoTasks } from "@/app/constants/todos";
 import { GET_TODOS } from "@/graphql/queries";
 import { useMutation, useQuery } from "@apollo/client/react";
