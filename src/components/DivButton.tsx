@@ -1,4 +1,4 @@
-import { DivBlockTodoProps } from "./TodoItem";
+import { DivBlockTodoProps } from "./ItemTodo";
 
 const DivButtonTodo: React.FC<DivBlockTodoProps> = ({children}) => {
     return(
