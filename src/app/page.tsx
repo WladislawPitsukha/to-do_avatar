@@ -2,7 +2,7 @@
 import Footer from "@/components/footer";
 import Navbar from "@/components/navbar";
 import SpeedDialMain from "@/components/SpeedDialMain";
-import TodoList from "@/components/TodoList";
+import TodoList from "@/components/ListTodo";
 
 export default function Home() {
   return (

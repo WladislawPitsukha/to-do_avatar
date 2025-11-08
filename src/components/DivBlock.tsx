@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { DivBlockTodoProps } from "./TodoItem";
+import { DivBlockTodoProps } from "./ItemTodo";
 
 export const DivBlockTodo: React.FC<DivBlockTodoProps> =  ({children}) => {
     const [windowWidth, setWindowWidth] = useState<number | null>(typeof window !== 'undefined' ? window.innerWidth : 0);

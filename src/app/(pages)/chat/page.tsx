@@ -1,7 +1,7 @@
 "use client";
 
 import { generateReplyByBot } from "@/app/utils/generateReplyByBot";
-import BotWidget from "@/components/BotWidget";
+import BotWidget from "@/components/WidgetBot";
 import SpeedDialMain from "@/components/SpeedDialMain";
 import { MessageProps } from "@/types/message";
 import React, { useState } from "react";
