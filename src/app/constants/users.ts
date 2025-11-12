@@ -1,7 +1,12 @@
-//TODO: later add more users or fetch from API
-//TODO: add user roles and permissions
-//TODO: integrate with authentication system
-//TODO: add user profile settings
+//TODO: MAIN_TASK: later add more users or fetch from API
+//TODO: MAIN_TASK: add user roles and permissions
+//TODO: MAIN_TASK: integrate with authentication system
+//TODO: MAIN_TASK: add user profile settings
+
+//TODO: LATER_TASK: later add profile picture upload functionality
+//TODO: LATER_TASK: add users roles and permissions management
+//TODO: LATER_TASK: testing with my users
+//TODO: LATER_TASK: add to users array more detailed profiles from type ProfileInfo
 
 export type User = {
     id: string;
