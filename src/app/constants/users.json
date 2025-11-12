@@ -1,0 +1,23 @@
+[
+    {
+        "id": "u1",
+        "name": "Alice Johnson",
+        "email": "alice.johnson@example.com",
+        "avatarUrl": "https://i.pravatar.cc/150?img=32",
+        "role": "admin"
+    },
+    {
+        "id": "u2",
+        "name": "Bob Martinez",
+        "email": "bob.martinez@example.com",
+        "avatarUrl": "https://i.pravatar.cc/150?img=12",
+        "role": "user"
+    },
+    {
+        "id": "u3",
+        "name": "Carol Nguyen",
+        "email": "carol.nguyen@example.com",
+        "avatarUrl": "https://i.pravatar.cc/150?img=48",
+        "role": "user"
+    }
+]
