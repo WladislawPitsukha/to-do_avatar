@@ -1,4 +1,4 @@
-import { MessageProps } from "@/types/message";
+import { MessageProps } from "@/types/type";
 
 export async function sendMessage(message: string) {
     try {

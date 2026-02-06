@@ -1,7 +1,7 @@
-import { ProfileInfo } from "@/types/profileInfo";
-
 // TODO: these are local example users for development / demo purposes.
 // TODO: later: fetch from API or integrate with auth backend.
+
+import { ProfileInfo } from "@/types/type";
 
 export const USERS: ProfileInfo[] = [
     {
@@ -118,6 +118,83 @@ export const USERS: ProfileInfo[] = [
         createdAt: new Date(Date.now() - 1000 * 60 * 60 * 24 * 90).toISOString(),
         lastLogin: new Date().toISOString(),
     },
+    {
+        id: "u4",
+        name: "David Kim",
+        email: "david.kim@example.com",
+        avatarUrl: "https://i.pravatar.cc/150?img=25",
+        role: "user",
+        membership: {
+            plan: "premium",
+            status: "active",
+            expiresAt: new Date(Date.now() + 1000 * 60 * 60 * 24 * 180).toISOString(),
+        },
+        settings: {
+            darkMode: true,
+            locale: "ko-KR",
+            timezone: "Asia/Seoul",
+            notifications: { mentions: true, messages: true, tasks: false },
+            privacyLevel: "private",
+            dataSharing: true,
+        },
+        preferences: {
+            defaultTaskView: "board",
+            itemsPerPage: 25,
+            showCompletedTasks: false,
+            language: "ko",
+        },
+        activity: [
+            {
+                id: "a4",
+                type: "login",
+                details: "Signed in from MacBook",
+                timestamp: new Date().toISOString(),
+            },
+            {
+                id: "a5",
+                type: "update_profile",
+                details: "Updated profile picture",
+                timestamp: new Date(Date.now() - 1000 * 60 * 60 * 2).toISOString(),
+            },
+        ],
+        createdAt: new Date(Date.now() - 1000 * 60 * 60 * 24 * 60).toISOString(),
+        lastLogin: new Date().toISOString(),
+    },
+    {
+        id: "u5",
+        name: "Elena Petrova",
+        email: "elena.petrova@example.com",
+        avatarUrl: "https://i.pravatar.cc/150?img=45",
+        role: "user",
+        membership: {
+            plan: "free",
+            status: "active",
+        },
+        settings: {
+            darkMode: false,
+            locale: "ru-RU",
+            timezone: "Europe/Moscow",
+            notifications: { mentions: false, messages: true, tasks: true },
+            privacyLevel: "friends-only",
+            dataSharing: false,
+        },
+        preferences: {
+            defaultTaskView: "list",
+            itemsPerPage: 12,
+            showCompletedTasks: true,
+            language: "ru",
+        },
+        activity: [
+            {
+                id: "a6",
+                type: "login",
+                details: "Signed in from Android",
+                timestamp: new Date().toISOString(),
+            }
+        ],
+        createdAt: new Date(Date.now() - 1000 * 60 * 60 * 24 * 30).toISOString(),
+        lastLogin: new Date().toISOString(),
+    }
 ];
 
 export default USERS;
