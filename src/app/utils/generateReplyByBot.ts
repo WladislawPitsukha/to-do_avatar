@@ -1,9 +1,6 @@
 //TODO: MAIN: add func to declare type of user (man or woman) when greeting
-//TODO: MAIN: add func to generate more human-like answers: farewells, thanks, helpRequests, explicitQuestions
 
 //TODO: NEW_MAIN: improve bot replies variety for same user inputs
-//TODO: NEW_MAIN: add more categories and phrases for better bot replies from categoryReply.ts
-//TODO: NEW_MAIN: add subFunctions for more specific replies (time, weather, tasks, etc.)
 
 import { arrayCateReply } from "../constants/categoryReply";
 import { analizeMessage } from "./analizeMessage";

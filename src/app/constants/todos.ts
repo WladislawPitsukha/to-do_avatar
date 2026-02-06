@@ -1,4 +1,4 @@
-import { Todo } from "@/types/todo";
+import { Todo } from "@/types/type";
 
 export const todoTasks: Todo[] = [
     {
@@ -82,69 +82,6 @@ export const todoTasks: Todo[] = [
         },
         extra: {
             tags: ["social", "team"],
-            subTasks: [],
-        }
-    },
-    {
-        id: 5,
-        main: {
-            title: "Write documentation",
-            description: "Create technical documentation for the new features.",
-        },
-        status: {
-            completed: false,
-            priority: "high",
-            type: "task",
-        },
-        time: {
-            createdAt: new Date("2023-10-06T11:00:00Z"),
-            updatedAt: new Date("2023-10-06T11:00:00Z"),
-            dueDate: new Date("2023-10-09T17:00:00Z"),
-        },
-        extra: {
-            tags: ["docs", "technical"],
-            subTasks: [],
-        }
-    },
-    {
-        id: 6,
-        main: {
-            title: "Weekly standup",
-            description: "Weekly team status update meeting.",
-        },
-        status: {
-            completed: false,
-            priority: "medium",
-            type: "event",
-        },
-        time: {
-            createdAt: new Date("2023-10-07T08:00:00Z"),
-            updatedAt: new Date("2023-10-07T08:00:00Z"),
-            dueDate: new Date("2023-10-11T10:00:00Z"),
-        },
-        extra: {
-            tags: ["meeting", "weekly"],
-            subTasks: [],
-        }
-    },
-    {
-        id: 7,
-        main: {
-            title: "Project presentation",
-            description: "Prepare and deliver project status presentation to stakeholders.",
-        },
-        status: {
-            completed: false,
-            priority: "high",
-            type: "event",
-        },
-        time: {
-            createdAt: new Date("2023-10-08T13:00:00Z"),
-            updatedAt: new Date("2023-10-08T13:00:00Z"),
-            dueDate: new Date("2023-10-13T15:00:00Z"),
-        },
-        extra: {
-            tags: ["presentation", "stakeholders"],
             subTasks: [],
         }
     },
