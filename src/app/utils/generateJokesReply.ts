@@ -4,7 +4,7 @@ let previousJokes: string[] = [];
 let nextJokes: string[] = [];
 
 export function SendJokeReply(): string {
-    const jokes = JokesReply.slice(0, 5);
+    const jokes = [...JokesReply];
 
     if(nextJokes.length === 0) {
         nextJokes = [...jokes]
