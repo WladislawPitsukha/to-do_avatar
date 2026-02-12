@@ -45,12 +45,7 @@ export type Todo = {
         title: string;
         description?: string;
     };
-    status: {
-        completed: boolean;
-        priority: "low" | "medium" | "high";
-        type: "task" | "event" | "note";
-        archived?: boolean;
-    };
+    status: Todo_status
     time: {
         createdAt: Date;
         updatedAt: Date;
@@ -61,6 +56,14 @@ export type Todo = {
         subTasks?: Todo[];
     };
 }
+
+export type Todo_status = {
+    completed: boolean;
+    priority: "low" | "medium" | "high";
+    type: "task" | "event" | "note";
+    archived?: boolean;
+}
+
 
 export type ProfileInfo = {
     id?: string;

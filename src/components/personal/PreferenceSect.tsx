@@ -1,7 +1,7 @@
 "use client";
 
 import { PRIMARY_ACCENT } from "@/app/(pages)/profile/page";
-import { ProfileInfo } from "@/types/profileInfo";
+import { ProfileInfo } from "@/types/type";
 import { useEffect, useState } from "react";
 
 export type ProfileSectProps = {

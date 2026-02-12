@@ -1,6 +1,6 @@
 "use client";
 
-import { Todo, Todo_status } from "@/types/todo";
+import { Todo, Todo_status } from "@/types/type";
 import { Button, FormControl, InputLabel, MenuItem, Select, TextField } from "@mui/material";
 import { useState } from "react";
 

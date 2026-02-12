@@ -33,7 +33,10 @@ export function analizeMessage({
         case "explicitQuestion": {
             if (originalMessage.trim().endsWith("?") 
                 || phrases.some((p) => normalizeMessage(lowerMes).includes(p))) {
-                
+                if (typeof reply !== "string") {
+                    return null;
+                }
+
                 return reply;
             };
 

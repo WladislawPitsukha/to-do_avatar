@@ -11,7 +11,6 @@
 
 import React, { useEffect, useState } from "react";
 
-import { ProfileInfo } from "@/types/profileInfo";
 
 import SpeedDialMain from "@/components/SpeedDialMain";
 import MoreSect from "@/components/personal/MoreSect";
@@ -20,6 +19,7 @@ import ActivitySect from "@/components/personal/ActivitySect";
 import AccSetSect from "@/components/personal/AccSetSect";
 import AvatarSect from "@/components/personal/AvatarSect";
 import EditingForm from "@/components/personal/EditingForm";
+import { ProfileInfo } from "@/types/type";
 
 type TemplateProps = {
     profile: ProfileInfo;

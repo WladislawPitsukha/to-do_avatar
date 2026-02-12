@@ -3,8 +3,8 @@
 import { generateReplyByBot } from "@/app/utils/generateReplyByBot";
 import BotWidget from "@/components/WidgetBot";
 import SpeedDialMain from "@/components/SpeedDialMain";
-import { MessageProps } from "@/types/message";
 import React, { useState } from "react";
+import { MessageProps } from "@/types/type";
 
 export default function BotTemplate() {
     const [messages, setMessages] = useState<MessageProps[]>([]);
