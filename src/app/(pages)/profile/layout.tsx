@@ -1,8 +1,8 @@
 import { Metadata } from "next";
-import { ProfileInfo } from "@/types/profileInfo";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import Template from "./page";
+import { ProfileInfo } from "@/types/type";
 
 const profileData: ProfileInfo = {
     name: "John Doe",

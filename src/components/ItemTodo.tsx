@@ -1,4 +1,4 @@
-import { Todo } from "@/types/todo";
+import { Todo } from "@/types/type";
 import DashBoardBlock from "./Dashboard";
 import ButtonEdDel from "./ButtonEdDel";
 import { DeleteForever, EditSquare } from "@mui/icons-material";

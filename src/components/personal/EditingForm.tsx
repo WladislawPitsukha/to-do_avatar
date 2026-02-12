@@ -1,7 +1,7 @@
 "use client";
 
+import { ProfileInfo } from "@/types/type";
 import React, { useEffect, useState } from "react";
-import { ProfileInfo } from "@/types/profileInfo";
 
 type EditingFormProps = {
     profileData: ProfileInfo | null;

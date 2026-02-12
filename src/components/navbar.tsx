@@ -5,8 +5,8 @@ import { Home, Person } from "@mui/icons-material";
 import ThreePIcon from '@mui/icons-material/ThreeP';
 import Link from "next/link";
 import { usePathname } from "next/navigation"
-import { NavbarProps } from "@/types/navbar";
 import { CreateIcon, CreateIconProps } from "./CreateIcon";
+import { NavbarProps } from "@/types/type";
 
 export default function Navbar() {
     const pathname = usePathname();

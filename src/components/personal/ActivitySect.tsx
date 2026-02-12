@@ -2,7 +2,7 @@
 
 import React from "react";
 import { PRIMARY_ACCENT } from "@/app/(pages)/profile/page";
-import { ProfileInfo } from "@/types/profileInfo";
+import { ProfileInfo } from "@/types/type";
 
 type ActivitySectProps = {
     profileData: ProfileInfo | null;

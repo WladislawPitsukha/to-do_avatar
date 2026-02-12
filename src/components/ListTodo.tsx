@@ -5,12 +5,12 @@
 //TODO: add optimistic UI updates
 //TODO: handle errors from mutations
 
-import { Todo } from "@/types/todo";
 import TodoItem from "./ItemTodo";
 import { todoTasks } from "@/app/constants/todos";
 import { GET_TODOS } from "@/graphql/queries";
 import { useMutation, useQuery } from "@apollo/client/react";
 import { UPDATE_TODO_STATUS } from "@/graphql/mutations";
+import { Todo } from "@/types/type";
 
 interface GetListTODO {
     todos: Todo[];
