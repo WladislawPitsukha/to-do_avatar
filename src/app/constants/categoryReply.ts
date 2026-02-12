@@ -1,4 +1,5 @@
 import { ReplyCategoreProps } from "@/types/type";
+import { SendJokeReply } from "../utils/generateJokesReply";
 
 export function getTimeReply() {
     const now = new Date();
@@ -88,7 +89,7 @@ export const arrayCateReply: ReplyCategoreProps[] = [
         id: 12,
         category: "joke",
         phrases: ["joke", "make me laugh", "funny", "tell me a joke"],
-        reply: () => {} //TODO: add function that will return random joke from array of jokes
+        reply: SendJokeReply()
     },
     {
         id: 13,
