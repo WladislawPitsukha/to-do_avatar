@@ -21,7 +21,7 @@ export type ReplyCategoreProps = {
     id?: number;
     category: ReplyCategory;
     phrases: string[];
-    reply: string;
+    reply: string | (() => void);
 }
 
 export interface MessageProps {

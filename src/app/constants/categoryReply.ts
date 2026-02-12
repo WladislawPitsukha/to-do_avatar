@@ -67,6 +67,10 @@ export const arrayCateReply: ReplyCategoreProps[] = [
         category: "tasks",
         phrases: ["task", "todo", "to-do", "reminder", "note", "list", "tasks", "schedule"],
         reply: getTaskReply()
+        //TODO: make func to add task to todo list and return reply with added task
+        //TODO: make func to show tasks from todo list and return reply with tasks
+        //TODO: make func to delete task from todo list and return reply with deleted task
+        
     },
     {
         id: 10,
@@ -84,12 +88,12 @@ export const arrayCateReply: ReplyCategoreProps[] = [
         id: 12,
         category: "joke",
         phrases: ["joke", "make me laugh", "funny", "tell me a joke"],
-        reply: "Why did the developer go broke? Because he used up all his cache!"
+        reply: () => {} //TODO: add function that will return random joke from array of jokes
     },
     {
         id: 13,
         category: "affirmation",
         phrases: ["yes", "definitely", "absolutely", "of course", "certainly"],
         reply: "Great! Let's move forward."
-    }
+    },
 ];
