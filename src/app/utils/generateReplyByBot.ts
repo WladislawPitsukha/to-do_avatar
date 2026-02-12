@@ -1,3 +1,7 @@
+//TODO: MAIN: add func to declare type of user (man or woman) when greeting
+
+//TODO: NEW_MAIN: improve bot replies variety for same user inputs
+
 import { arrayCateReply } from "../constants/categoryReply";
 import { analizeMessage } from "./analizeMessage";
 

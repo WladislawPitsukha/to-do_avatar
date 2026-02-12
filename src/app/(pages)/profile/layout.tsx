@@ -7,7 +7,7 @@ import Template from "./page";
 const profileData: ProfileInfo = {
     name: "John Doe",
     email: "john.doe@example.com",
-    role: "User",
+    role: "user",
 };
 
 export const metadata: Metadata = {
