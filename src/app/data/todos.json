@@ -1,0 +1,86 @@
+[
+    {
+        "id": 1,
+        "main": {
+        "title": "Complete the project",
+        "description": "Finish the project by the end of the week."
+        },
+        "status": {
+        "completed": false,
+        "priority": "high",
+        "type": "task"
+        },
+        "time": {
+        "createdAt": "2023-10-01T10:00:00.000Z",
+        "updatedAt": "2023-10-02T12:00:00.000Z",
+        "dueDate": "2023-10-07T17:00:00.000Z"
+        },
+        "extra": {
+        "tags": ["work", "urgent"],
+        "subTasks": []
+        }
+    },
+    {
+        "id": 2,
+        "main": {
+        "title": "Plan the meeting",
+        "description": "Schedule a meeting with the team to discuss project progress."
+        },
+        "status": {
+        "completed": false,
+        "priority": "medium",
+        "type": "event"
+        },
+        "time": {
+        "createdAt": "2023-10-03T09:00:00.000Z",
+        "updatedAt": "2023-10-04T11:00:00.000Z",
+        "dueDate": "2023-10-05T15:00:00.000Z"
+        },
+        "extra": {
+        "tags": ["meeting", "team"],
+        "subTasks": []
+        }
+    },
+    {
+        "id": 3,
+        "main": {
+        "title": "Review code",
+        "description": "Review and provide feedback on team's code submissions."
+        },
+        "status": {
+        "completed": true,
+        "priority": "medium",
+        "type": "task"
+        },
+        "time": {
+        "createdAt": "2023-10-04T14:00:00.000Z",
+        "updatedAt": "2023-10-04T16:30:00.000Z",
+        "dueDate": "2023-10-06T17:00:00.000Z"
+        },
+        "extra": {
+        "tags": ["code", "review"],
+        "subTasks": []
+        }
+    },
+    {
+        "id": 4,
+        "main": {
+        "title": "Team lunch",
+        "description": "Monthly team lunch and social gathering."
+        },
+        "status": {
+        "completed": false,
+        "priority": "low",
+        "type": "event"
+        },
+        "time": {
+        "createdAt": "2023-10-05T09:00:00.000Z",
+        "updatedAt": "2023-10-05T09:00:00.000Z",
+        "dueDate": "2023-10-12T12:00:00.000Z"
+        },
+        "extra": {
+        "tags": ["social", "team"],
+        "subTasks": []
+        }
+    }
+]

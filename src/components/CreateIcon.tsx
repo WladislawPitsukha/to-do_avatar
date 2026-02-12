@@ -11,6 +11,6 @@ export function CreateIcon({icon, set}: {icon: any, set: CreateIconProps}) {
     const {width, height, color} = set
 
     return React.cloneElement(IconName, {
-        className: `${width === 'number' ? `w-${width}` : `w-[${width}]`} h-[${set.height}] text-${set.color}`
+        className: `${width === 'number' ? `w-${width}` : `w-[${width}]`} h-[${height}] text-${color}`
     })
 }

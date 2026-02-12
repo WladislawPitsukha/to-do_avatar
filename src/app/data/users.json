@@ -1,0 +1,185 @@
+[
+    {
+        "id": "u1",
+        "name": "Alice Johnson",
+        "email": "alice.johnson@example.com",
+        "avatarUrl": "https://i.pravatar.cc/150?img=32",
+        "role": "admin",
+        "membership": {
+        "plan": "premium",
+        "status": "active",
+        "expiresAt": "2027-02-06T00:00:00.000Z"
+        },
+        "settings": {
+        "darkMode": false,
+        "locale": "en-US",
+        "timezone": "Europe/London",
+        "notifications": { "mentions": true, "messages": true, "tasks": true },
+        "privacyLevel": "private",
+        "dataSharing": false
+        },
+        "preferences": {
+        "defaultTaskView": "board",
+        "itemsPerPage": 20,
+        "showCompletedTasks": true,
+        "language": "en"
+        },
+        "activity": [
+        {
+            "id": "a1",
+            "type": "login",
+            "details": "Signed in from Chrome on Windows",
+            "timestamp": "2026-02-06T00:00:00.000Z"
+        },
+        {
+            "id": "a2",
+            "type": "create_task",
+            "details": "Created task \"Prepare Q4 report\"",
+            "timestamp": "2026-02-05T00:00:00.000Z"
+        }
+        ],
+        "createdAt": "2025-02-06T00:00:00.000Z",
+        "lastLogin": "2026-02-06T00:00:00.000Z"
+    },
+    {
+        "id": "u2",
+        "name": "Bob Martinez",
+        "email": "bob.martinez@example.com",
+        "avatarUrl": "https://i.pravatar.cc/150?img=12",
+        "role": "user",
+        "membership": {
+        "plan": "free",
+        "status": "active"
+        },
+        "settings": {
+        "darkMode": true,
+        "locale": "en-US",
+        "timezone": "America/New_York",
+        "notifications": { "mentions": true, "messages": false, "tasks": true },
+        "privacyLevel": "public",
+        "dataSharing": false
+        },
+        "preferences": {
+        "defaultTaskView": "list",
+        "itemsPerPage": 10,
+        "showCompletedTasks": false,
+        "language": "en"
+        },
+        "activity": [
+        {
+            "id": "a3",
+            "type": "login",
+            "details": "Signed in from Mobile",
+            "timestamp": "2026-02-06T00:00:00.000Z"
+        }
+        ],
+        "createdAt": "2025-07-21T00:00:00.000Z",
+        "lastLogin": "2026-02-06T00:00:00.000Z"
+    },
+    {
+        "id": "u3",
+        "name": "Carol Nguyen",
+        "email": "carol.nguyen@example.com",
+        "avatarUrl": "https://i.pravatar.cc/150?img=48",
+        "role": "user",
+        "membership": {
+        "plan": "free",
+        "status": "trial",
+        "expiresAt": "2026-02-20T00:00:00.000Z"
+        },
+        "settings": {
+        "darkMode": false,
+        "locale": "fr-FR",
+        "timezone": "Europe/Paris",
+        "notifications": { "mentions": false, "messages": true, "tasks": true },
+        "privacyLevel": "friends-only",
+        "dataSharing": true
+        },
+        "preferences": {
+        "defaultTaskView": "calendar",
+        "itemsPerPage": 15,
+        "showCompletedTasks": true,
+        "language": "fr"
+        },
+        "activity": [],
+        "createdAt": "2025-11-08T00:00:00.000Z",
+        "lastLogin": "2026-02-06T00:00:00.000Z"
+    },
+    {
+        "id": "u4",
+        "name": "David Kim",
+        "email": "david.kim@example.com",
+        "avatarUrl": "https://i.pravatar.cc/150?img=25",
+        "role": "user",
+        "membership": {
+        "plan": "premium",
+        "status": "active",
+        "expiresAt": "2026-08-05T00:00:00.000Z"
+        },
+        "settings": {
+        "darkMode": true,
+        "locale": "ko-KR",
+        "timezone": "Asia/Seoul",
+        "notifications": { "mentions": true, "messages": true, "tasks": false },
+        "privacyLevel": "private",
+        "dataSharing": true
+        },
+        "preferences": {
+        "defaultTaskView": "board",
+        "itemsPerPage": 25,
+        "showCompletedTasks": false,
+        "language": "ko"
+        },
+        "activity": [
+        {
+            "id": "a4",
+            "type": "login",
+            "details": "Signed in from MacBook",
+            "timestamp": "2026-02-06T00:00:00.000Z"
+        },
+        {
+            "id": "a5",
+            "type": "update_profile",
+            "details": "Updated profile picture",
+            "timestamp": "2026-02-05T22:00:00.000Z"
+        }
+        ],
+        "createdAt": "2025-12-08T00:00:00.000Z",
+        "lastLogin": "2026-02-06T00:00:00.000Z"
+    },
+    {
+        "id": "u5",
+        "name": "Elena Petrova",
+        "email": "elena.petrova@example.com",
+        "avatarUrl": "https://i.pravatar.cc/150?img=45",
+        "role": "user",
+        "membership": {
+        "plan": "free",
+        "status": "active"
+        },
+        "settings": {
+        "darkMode": false,
+        "locale": "ru-RU",
+        "timezone": "Europe/Moscow",
+        "notifications": { "mentions": false, "messages": true, "tasks": true },
+        "privacyLevel": "friends-only",
+        "dataSharing": false
+        },
+        "preferences": {
+        "defaultTaskView": "list",
+        "itemsPerPage": 12,
+        "showCompletedTasks": true,
+        "language": "ru"
+        },
+        "activity": [
+        {
+            "id": "a6",
+            "type": "login",
+            "details": "Signed in from Android",
+            "timestamp": "2026-02-06T00:00:00.000Z"
+        }
+        ],
+        "createdAt": "2026-01-07T00:00:00.000Z",
+        "lastLogin": "2026-02-06T00:00:00.000Z"
+    }
+]

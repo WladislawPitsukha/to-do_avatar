@@ -35,7 +35,7 @@ export default function SpeedDialMain() {
                 router.push('/form');
                 break;
             case 'Chat with Bot':
-                router.push('/bot')
+                router.push('/chat')
                 break;
             default:
                 break;

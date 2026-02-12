@@ -7,7 +7,7 @@ import Template from "./page";
 const profileData: ProfileInfo = {
     name: "John Doe",
     email: "john.doe@example.com",
-    role: "User",
+    role: "user",
 };
 
 export const metadata: Metadata = {
@@ -23,7 +23,7 @@ export default function ProfileLayout({
     return (
         <div className="min-h-screen flex flex-col bg-white">
             <Navbar />
-            <Template profile={profileData} />
+                <Template profile={profileData} />
             <Footer />
         </div>
     );

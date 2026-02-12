@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { Menu, MenuItem } from "@mui/material";
 import DescriptionIcon from '@mui/icons-material/Description';
 import DivButtonTodo from "./DivButton";
-import { DivBlockTodoProps } from "./todoItem";
+import { DivBlockTodoProps } from "./ItemTodo";
 
 const DashBoardBlock: React.FC<DivBlockTodoProps> = ({children}) => {
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
